@@ -1,0 +1,22 @@
+.navbar.bg-primary {
+    background-color: #A3102D !important;
+}
+
+.btn-primary {
+    background-color: #A3102D !important;
+    border-color: #830B22 !important; 
+}
+
+.btn-primary:hover {
+    background-color: #830B22 !important;
+    border-color: #650719 !important;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+}
