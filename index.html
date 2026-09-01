@@ -52,18 +52,10 @@
                             <label for="Nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="Nombre" placeholder="ej. Juan Perez">
 
-                            <div class="dropdown" style="margin-top: 30px; margin-bottom: 10px; ">
-                                <a class="btn btn-primary dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tipo de sala
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">salas de clases</a></li>
-                                    <li><a class="dropdown-item" href="#">laboratorios</a></li>
-                                    <li><a class="dropdown-item" href="#">salas de estudio</a></li>
-                                    <li><a class="dropdown-item" href="#">salas de reunion</a></li>
-                                </ul>
+                            <div class="mb-3">
+                                <label for="salaSeleccionada" class="form-label">Espacio a reservar</label>
+                                <!-- El atributo readonly bloquea la escritura -->
+                                <input type="text" class="form-control" id="salaSeleccionada" readonly required>
                             </div>
                             <label for="modal-email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="modal-email"

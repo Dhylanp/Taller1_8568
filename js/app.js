@@ -68,6 +68,8 @@ document.getElementById("contenedor-tarjetas").addEventListener("click", (e) => 
         const espacioSeleccionado = espacios.find(esp => esp.id == espacioId);
 
         console.log("Espacio seleccionado para reservar:", espacioSeleccionado);
+        const inputSala = document.getElementById("salaSeleccionada");
+        inputSala.value = espacioSeleccionado.nombre;
         //conectar con la funcion de reservas//
     }
 });
