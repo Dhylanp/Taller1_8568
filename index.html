@@ -36,7 +36,59 @@
 
         <section id = "seccion-reservas" class = "mb-4">
 
-            <!-- aqui van las reservas realizadas (Dhylan) -->
+            <section class="bg-light">
+        <div class="container">
+            <p class="lead text-center">Portal de reserva</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="text-muted my-4">Para proceder con la reserva haga click en "Hacer una reserva" y complete los
+                    campos requeridos.</p>
+
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
+                    Hacer una reserva
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="reg-modal" tabindex="-1" aria-laballedby="modal-title" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Hacer una reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Haga clic en "subir" para proceder con la reserva.</p>
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="Nombre" placeholder="ej. Juan Perez">
+
+                    <div class="dropdown" style="margin-top: 30px; margin-bottom: 10px; ">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Tipo de sala 
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">salas de clases</a></li>
+                            <li><a class="dropdown-item" href="#">laboratorios</a></li>
+                            <li><a class="dropdown-item" href="#">salas de estudio</a></li>
+                            <li><a class="dropdown-item" href="#">salas de reunion</a></li>
+                        </ul>
+                    </div>
+                    <label for="modal-email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="modal-email" placeholder="e.g.correo@gmail.-com">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">RESERVAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
         </section>
 
