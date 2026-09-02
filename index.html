@@ -11,15 +11,35 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-dark bg-primary mb-4">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Reserva de Espacios UNAB</span>
+   <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container-fluid">
+
+            <span class="navbar-brand mb-0 h1">Reserva de Espacios UNAB</span>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="menuNavegacion">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Tipos de salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mis Reservas</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
     <main class="container mb-5">
+
+        <section id="seccion-filtros" class="mb-4">
+
+            <!-- aqui van los filtros (Gabriel) -->
 
         <section id="seccion-filtros" class="mb-4">
             <h2 class="title">Selección de Sala</h2>
@@ -49,24 +69,8 @@
 
         </section>
 
+        <!-- aqui van los reserva-->
         <section id="seccion-reservas" class="mb-4">
-
-            <section class="bg-light">
-                <div class="container">
-                    <p class="lead text-center">Portal de reserva</p>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-8 text-center">
-                        <p class="text-muted my-4">Para proceder con la reserva haga click en "Hacer una reserva" y
-                            complete los
-                            campos requeridos.</p>
-
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
-                            Hacer una reserva
-                        </button>
-                    </div>
-                </div>
-            </section>
 
             <div class="modal fade" id="reg-modal" tabindex="-1" aria-laballedby="modal-title" aria-hidden="true">
 
@@ -76,37 +80,80 @@
                             <h5 class="modal-title" id="modal-title">Hacer una reserva</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <!-- Datos para reservar -->
                         <div class="modal-body">
-                            <p>Haga clic en "subir" para proceder con la reserva.</p>
-                            <label for="Nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="Nombre" placeholder="ej. Juan Perez">
+                            <p>Complete los siguientes datos para buscar disponibilidad.</p>
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="salaSeleccionada" class="form-label">Tipo de espacio requerido</label>
+                                    <input type="text" class="form-control" id="salaSeleccionada" readonly required>
+                                </div>
 
-                            <div class="dropdown" style="margin-top: 30px; margin-bottom: 10px; ">
-                                <a class="btn btn-primary dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tipo de sala
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="Nombre" placeholder="Ej. Tomas Perez"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="modal-email" class="form-label">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="modal-email"
+                                            placeholder="ejemplo@correo.com" required>
+                                    </div>
+                                </div>
+                                <!-- El edificio hay que colocar las opciones -->
+                                <div class="mb-3">
+                                    <label for="edificioReserva" class="form-label">Edificio preferido</label>
+                                    <select class="form-select" id="edificioReserva" required>
+                                        <option value="" selected disabled>Seleccione un edificio...</option>
+                                        <option value="1">Torre A</option>
+                                        <option value="2">Torre B</option>
+                                        <option value="3">Torre C</option>
+                                        <option value="4">Torre D</option>
+                                    </select>
+                                    <div class="invalid-feedback">Por favor seleccione un edificio válido.</div>
+                                    <!-- no esta funcionando -->
+                                </div>
 
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">salas de clases</a></li>
-                                    <li><a class="dropdown-item" href="#">laboratorios</a></li>
-                                    <li><a class="dropdown-item" href="#">salas de estudio</a></li>
-                                    <li><a class="dropdown-item" href="#">salas de reunion</a></li>
-                                </ul>
-                            </div>
-                            <label for="modal-email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="modal-email"
-                                placeholder="e.g.correo@gmail.-com">
+                                <!-- fehcasas-->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="fechaReserva" class="form-label">Fecha</label>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary">RESERVAR</button>
+                                        <input type="date" class="form-control" id="fechaReserva" required>
+                                        <div class="invalid-feedback">Por favor indique la fecha.</div>
+                                        <!-- no esta funcionando -->
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="horaReserva" class="form-label">Horario</label>
+                                        <!-- SELECCIÓN DE HORARIO -->
+                                        <select class="form-select" id="horaReserva" required>
+                                            <option value="" selected disabled>Seleccione un horario...</option>
+                                            <option value="1">08:00 - 09:00</option>
+                                            <option value="2">09:00 - 10:00</option>
+                                            <option value="3">10:00 - 11:00</option>
+                                            <option value="4">11:00 - 12:00</option>
+                                        </select>
+                                        <div class="invalid-feedback">Por favor seleccione un bloque horario.</div>
+                                        <!-- no esta funcionando -->
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-footer px-0 pb-0 mt-3">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Reservar
+                                    </button>
+
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </section>
 
     </main>

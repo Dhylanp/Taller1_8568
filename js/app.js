@@ -126,7 +126,7 @@ function renderizarCatalogo(listaEspacios) {
                         <p class = "card-text">${espacio.descripcion}</p>
                     </div>
                     <div class = "card-footer bg-transparent border-0 pb-3">
-                        <button class = "btn btn-primary w-100 btn-reservar" data-id="${espacio.id}">Solicitar Reserva</button>
+                        <button class = "btn btn-primary w-100 btn-reservar" data-id="${espacio.id}" data-bs-toggle="modal" data-bs-target="#reg-modal">Solicitar Reserva</button>
                     </div>
                 </div>
             </div>
@@ -147,6 +147,8 @@ document.getElementById("contenedor-tarjetas").addEventListener("click", (e) => 
         const espacioSeleccionado = espacios.find(esp => esp.id == espacioId);
 
         console.log("Espacio seleccionado para reservar:", espacioSeleccionado);
+        const inputSala = document.getElementById("salaSeleccionada");
+        inputSala.value = espacioSeleccionado.nombre;
         //conectar con la funcion de reservas//
     }
 });
