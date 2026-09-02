@@ -1,7 +1,7 @@
 .cmbColumn {
     background: #2f3640;
     border-radius: 10px;
-    margin-boton: 10px;
+    margin-bottom: 10px;
     color: #f5f6fa;
     border: none;
     font-size: 14px;
@@ -10,9 +10,10 @@
     width: 100%;
 }
 
-.cmbColumn .option {
+/* Corregido: sin punto en option y estilo de borde válido */
+.cmbColumn option {
     height: 30px;
-    border-button: 10px;
+    border-bottom: 1px solid #dcdde1; 
 }
 
 .navbar.bg-primary {

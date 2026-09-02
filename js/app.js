@@ -1,21 +1,21 @@
 // Datos de Ejemplo UNAB
 
-Edificios = [
+const Edificios = [
     { id_Edificio: 1, nombre: "Torre A", pisos_superiores: 7, pisos_subterraneos: 2 },
     { id_Edificio: 2, nombre: "Torre B", pisos_superiores: 7, pisos_subterraneos: 2 },
     { id_Edificio: 3, nombre: "Torre C", pisos_superiores: 7, pisos_subterraneos: 2 },
     { id_Edificio: 4, nombre: "Torre D", pisos_superiores: 7, pisos_subterraneos: 2 },
 ]
 
-Tipos_Sala = [
+const Tipos_Sala = [
     { id_TipoSala: 1, tipo: "Sala Pequeña", asientos: 15 },
     { id_TipoSala: 2, tipo: "Sala Mediana", asientos: 25 },
     { id_TipoSala: 3, tipo: "Box", asientos: 8 },
-    { id_TipoSala: 3, tipo: "Auditorio", asientos: 120 },
-    { id_TipoSala: 3, tipo: "Laboratorio", asientos: 30 }
+    { id_TipoSala: 4, tipo: "Auditorio", asientos: 120 },
+    { id_TipoSala: 5, tipo: "Laboratorio", asientos: 30 }
 ]
 
-Listado = [
+const Listado = [
     { id: 1, id_Edificio: 1, id_TipoSala: 2, fecha: "01-09-2026", hora: "8:30" },
     { id: 2, id_Edificio: 1, id_TipoSala: 2, fecha: "01-09-2026", hora: "9:25" },
     { id: 3, id_Edificio: 1, id_TipoSala: 1, fecha: "01-09-2026", hora: "9:25" },
@@ -61,25 +61,6 @@ ListadoFiltrado = Listado.filter(filtrar)
 
 console.log(ListadoFiltrado)
 
-//Rellena Combos de filtros
-
-const comboEdificios = document.getElementById("comboEdificios");
-const comboSalas = document.getElementById("comboSalas");
-
-Tipos_Sala.forEach(sala => {
-    const opcion = document.createElement("option");
-    opcion.value = sala.id_TipoSala;
-    opcion.text = sala.tipo;
-    comboSalas.appendChild(opcion);
-});
-
-Edificios.forEach(edificio => {
-    const opcion = document.createElement("option");
-    opcion.value = edificio.id_Edificio;
-    opcion.text = edificio.nombre;
-    comboEdificios.appendChild(opcion);
-});
-
 const espacios = [
     {
         id: 1,
@@ -112,7 +93,7 @@ const espacios = [
 
 function renderizarCatalogo(listaEspacios) {
     const contenedor = document.getElementById("contenedor-tarjetas");
-    contenedor.innerHTML = " ";
+    contenedor.innerHTML = "";
 
     listaEspacios.forEach((espacio) => {
         const tarjetaHTML = `
@@ -137,6 +118,26 @@ function renderizarCatalogo(listaEspacios) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    //Rellena Combos de filtros
+
+    const comboEdificios = document.getElementById("comboEdificios");
+    const comboSalas = document.getElementById("comboSalas");
+
+    Tipos_Sala.forEach(sala => {
+        const opcion = document.createElement("option");
+        opcion.value = sala.id_TipoSala;
+        opcion.text = sala.tipo;
+        comboSalas.appendChild(opcion);
+    });
+
+    Edificios.forEach(edificio => {
+        const opcion = document.createElement("option");
+        opcion.value = edificio.id_Edificio;
+        opcion.text = edificio.nombre;
+        comboEdificios.appendChild(opcion);
+    });
+
     renderizarCatalogo(espacios);
 
 });
