@@ -151,6 +151,12 @@ const Tipos_Sala = [
     { id : 5, tipo : "Sala de Estudio", asientos : 8}
 ]
 
+const Horarios = [
+    { idReserva: 1, salaId: 1, fecha: "2026-06-10", hora: "08:00 - 09:00" },
+    { idReserva: 2, salaId: 3, fecha: "2026-06-11", hora: "10:00 - 11:00" },
+    { idReserva: 3, salaId: 2, fecha: "2026-06-12", hora: "11:00 - 12:00" }
+];
+
 // Constantes y Funciones para Filtros
 
 var edificioSeleccionado = "";

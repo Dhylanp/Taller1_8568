@@ -8,65 +8,98 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-        <div class="container-fluid">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+            <div class="container-fluid">
 
-            <span class="navbar-brand mb-0 h1">Reserva de Espacios UNAB</span>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse justify-content-end" id="menuNavegacion">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Tipos de salas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mis Reservas</a>
-                    </li>
-                </ul>
+                <span class="navbar-brand mb-0 h1">Reserva de Espacios UNAB</span>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion"
+                    aria-controls="menuNavegacion" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="menuNavegacion">
+                    <ul class="navbar-nav nav-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active text-white bg-transparent border-0" data-bs-toggle="pill"
+                                data-bs-target="#seccion-catalogo-general" type="button" role="tab">Tipos de
+                                salas</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link text-white bg-transparent border-0" data-bs-toggle="pill"
+                                data-bs-target="#seccion-mis-reservas" type="button" role="tab">Mis Reservas</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <main class="container mb-5">
-        <!--Section Gabriel-->
-        <section id="seccion-filtros" class="mb-4">
-            <h2 class="title">Selección de Sala</h2>
-            <div class="row" style="display: flex;">
-                <div class="columna" style="width: 33%; text-align: center; font-size: large;">
-                    <div id="multi-search">
-                        <select id="comboEdificios" class="cmbColumn" name="comboEdificios" onchange="actualizarListado()">
-                            <option value="" disabled selected hidden >Filtrar por Edificio</option>
-                            <option value="">Todos los edificios</option>
-                        </select>
+        <div class="tab-content" id="contenidoPestanas">
+            <div class="tab-pane fade show active" id="seccion-catalogo-general" role="tabpanel">
+            <!--Section Gabriel-->
+            <section id="seccion-filtros" class="mb-4">
+                <h2 class="title">Selección de Sala</h2>
+                <div class="row" style="display: flex;">
+                    <div class="columna" style="width: 33%; text-align: center; font-size: large;">
+                        <div id="multi-search">
+                            <select id="comboEdificios" class="cmbColumn" name="comboEdificios"
+                                onchange="actualizarListado()">
+                                <option value="" disabled selected hidden>Filtrar por Edificio</option>
+                                <option value="">Todos los edificios</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="columna" style="width: 33%; text-align: center; font-size: large;">
-                    <div id="multi-search">
-                        <select id="comboSalas" class="cmbColumn" name="comboSalas" onchange="actualizarListado()">
-                            <option value="" disabled selected hidden>Filtrar por Sala</option>
-                            <option value="">Todas las Salas</option>
-                        </select>
+                    <div class="columna" style="width: 33%; text-align: center; font-size: large;">
+                        <div id="multi-search">
+                            <select id="comboSalas" class="cmbColumn" name="comboSalas" onchange="actualizarListado()">
+                                <option value="" disabled selected hidden>Filtrar por Sala</option>
+                                <option value="">Todas las Salas</option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="columna" style="width: 33%; text-align: center; font-size: large;"></div>
                 </div>
-                <div class="columna" style="width: 33%; text-align: center; font-size: large;"></div>
+            </section>
+            <!---->
+            <section id="seccion-catalogo" class="mb-5">
+                <h2 class="h4 mb-3 fw-bold">Espacios Disponibles</h2>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="contenedor-tarjetas"></div>
+            </section>
+
+        </div>
+
+        <!-- TABB -->
+
+        <div class="tab-pane fade" id="seccion-mis-reservas" role="tabpanel">
+            <h2 class="h4 mb-3 fw-bold">Mis Reservas</h2>
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Espacio</th>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Horario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-mis-reservas">
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No hay reservas registradas todavía.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
-        <!---->
-        <section id="seccion-catalogo" class="mb-5">
-            <h2 class="h4 mb-3 fw-bold">Espacios Disponibles</h2>
-
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="contenedor-tarjetas"></div>
-
-        </section>
-
+        </div> <!-- FIN TABB-->
+        </div>
         <!-- aqui van los reserva-->
         <section id="seccion-reservas" class="mb-4">
 
@@ -90,8 +123,8 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="Nombre" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="Nombre" placeholder="Ej. Tomas Perez"
-                                            required>
+                                        <input type="text" class="form-control" id="Nombre"
+                                            placeholder="Ej. Tomas Perez" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="modal-email" class="form-label">Correo electrónico</label>
@@ -99,21 +132,9 @@
                                             placeholder="ejemplo@correo.com" required>
                                     </div>
                                 </div>
-                                <!-- El edificio hay que colocar las opciones -->
-                                <div class="mb-3">
-                                    <label for="edificioReserva" class="form-label">Edificio preferido</label>
-                                    <select class="form-select" id="edificioReserva" required>
-                                        <option value="" selected disabled>Seleccione un edificio...</option>
-                                        <option value="1">Torre A</option>
-                                        <option value="2">Torre B</option>
-                                        <option value="3">Torre C</option>
-                                        <option value="4">Torre D</option>
-                                    </select>
-                                    <div class="invalid-feedback">Por favor seleccione un edificio válido.</div>
-                                    <!-- no esta funcionando -->
-                                </div>
 
-                                <!-- fehcasas-->
+
+                                <!-- fechas-->
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="fechaReserva" class="form-label">Fecha</label>
