@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     Edificios.forEach(edificio => {
         const opcion = document.createElement("option");
-        opcion.value = edificio.tipo;
+        opcion.value = edificio.nombre;
         opcion.text = edificio.nombre;
         comboEdificios.appendChild(opcion);
     });
