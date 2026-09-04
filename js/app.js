@@ -1,31 +1,103 @@
 const espacios = [
     {
         id: 1,
+        disponible: true,
         nombre: "Laboratorio de Computacion 206",
         tipo: "Laboratorio",
         ubicacion: "Torre A",
+        piso: 2,
         capacidad: 30,
         descripcion: "Equipado con 30 PCs, proyector y aire acondicionado.",
-        badgeClass: "bg-success"
+        badgeClass: "bg-morado"
     },
     {
         id: 2,
+        disponible: true,
         nombre: "Auditorio Amarillo 001",
         tipo: "Auditorio",
         ubicacion: "Torre C",
+        piso: -1,
         capacidad: 120,
         descripcion: "Sistema de audio profesional, microfono inalambrico y proyector.",
         badgeClass: "bg-warning text-dark"
     },
     {
         id: 3,
+        disponible: false,
         nombre: "Box 1",
         tipo: "Sala de Estudio",
         ubicacion: "Torre B",
+        piso: -1,
         capacidad: 8,
         descripcion: "Pizarra acrilica, enchufes individuales y mesa de trabajo grupal.",
         badgeClass: "bg-info text-dark"
-    }
+    },
+    {
+        id: 4,
+        disponible: true,
+        nombre: "Laboratorio de Computacion 306",
+        tipo: "Laboratorio",
+        ubicacion: "Torre A",
+        piso: 3,
+        capacidad: 30,
+        descripcion: "Equipado con 30 PCs, proyector y aire acondicionado.",
+        badgeClass: "bg-morado"
+    },
+    {
+        id: 5,
+        disponible: true,
+        nombre: "Box 2",
+        tipo: "Sala de Estudio",
+        ubicacion: "Torre B",
+        piso: -1,
+        capacidad: 8,
+        descripcion: "Pizarra acrilica, enchufes individuales y mesa de trabajo grupal.",
+        badgeClass: "bg-info text-dark"
+    },
+    {
+        id: 6,
+        disponible: false,
+        nombre: "Auditorio Verde 002",
+        tipo: "Auditorio",
+        ubicacion: "Torre C",
+        piso: -1,
+        capacidad: 120,
+        descripcion: "Sistema de audio profesional, microfono inalambrico y proyector.",
+        badgeClass: "bg-warning text-dark"
+    },
+    {
+        id: 7,
+        disponible: true,
+        nombre: "Sal-112",
+        tipo: "Sala pequeña",
+        ubicacion: "Torre C",
+        piso: 1,
+        capacidad: 15,
+        descripcion: "Equipado con proyector, y aire acondicionado",
+        badgeClass: "bg-primary"
+    },
+    {
+        id: 8,
+        disponible: true,
+        nombre: "Sal-525",
+        tipo: "Sala Mediana",
+        ubicacion: "Torre C",
+        piso: 5,
+        capacidad: 45,
+        descripcion: "Equipado con proyector y aire acondicionado.",
+        badgeClass: "bg-danger"
+    },
+    {
+        id: 9,
+        disponible: true,
+        nombre: "Sal-706",
+        tipo: "Sala Mediana",
+        ubicacion: "Torre A",
+        piso: 7,
+        capacidad: 45,
+        descripcion: "Equipado con proyector y aire acondicionado.",
+        badgeClass: "bg-danger"
+    },
 ];
 
 function renderizarCatalogo(listaEspacios) {
@@ -33,18 +105,25 @@ function renderizarCatalogo(listaEspacios) {
     contenedor.innerHTML = "";
 
     listaEspacios.forEach((espacio) => {
+
+        const textoDisponibilidad = espacio.disponible ? "Disponible" : "No Disponible";
+        const claseDisponibilidad = espacio.disponible ? "bg-success" : "bg-danger";
+        const btnDeshabilitado = espacio.disponible ? "" : "disabled";
+
         const tarjetaHTML = `
             <div class = "col">
                 <div class = "card h-100 shadow-sm">
                     <div class = "card-body">
                         <span class = "badge ${espacio.badgeClass} mb-2">${espacio.tipo}</span>
+                        <span class = "badge ${claseDisponibilidad} mb-2">${textoDisponibilidad}</span>
                         <h5 class = "card-title fw-bold">${espacio.nombre}</h5>
                         <p class = "card-text text-muted mb-1"><strong>Ubicación:</strong> ${espacio.ubicacion}</p>
+                        <p class = "card-text text-muted mb-1"><strong>Piso:</strong> ${espacio.piso}</p>
                         <p class = "card-text text-muted mb-2"><strong>Capacidad:</strong> ${espacio.capacidad} personas</p>
                         <p class = "card-text">${espacio.descripcion}</p>
                     </div>
                     <div class = "card-footer bg-transparent border-0 pb-3">
-                        <button class = "btn btn-primary w-100 btn-reservar" data-id="${espacio.id}" data-bs-toggle="modal" data-bs-target="#reg-modal">Solicitar Reserva</button>
+                        <button class = "btn btn-primary w-100 btn-reservar" data-id="${espacio.id}" data-bs-toggle="modal" data-bs-target="#reg-modal" ${btnDeshabilitado}>Solicitar Reserva</button>
                     </div>
                 </div>
             </div>
