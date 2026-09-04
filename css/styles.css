@@ -47,3 +47,8 @@ body {
     grid-template-rows: auto 1fr
     auto;
 }
+
+.bg-morado {
+  background-color: #6f42c1 !important;
+  color: #ffffff !important;
+}
