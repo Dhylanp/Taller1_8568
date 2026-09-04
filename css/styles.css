@@ -10,7 +10,6 @@
     width: 100%;
 }
 
-/* Corregido: sin punto en option y estilo de borde válido */
 .cmbColumn option {
     height: 30px;
     border-bottom: 1px solid #dcdde1; 

@@ -36,28 +36,30 @@
 </header>
 
     <main class="container mb-5">
-
+        <!--Section Gabriel-->
         <section id="seccion-filtros" class="mb-4">
             <h2 class="title">Selección de Sala</h2>
             <div class="row" style="display: flex;">
                 <div class="columna" style="width: 33%; text-align: center; font-size: large;">
                     <div id="multi-search">
-                        <select id="comboEdificios" class="cmbColumn" name="comboEdificios">
-                            <option value="" disabled selected hidden >Edificios</option>
+                        <select id="comboEdificios" class="cmbColumn" name="comboEdificios" onchange="actualizarListado()">
+                            <option value="" disabled selected hidden >Filtrar por Edificio</option>
+                            <option value="">Todos los edificios</option>
                         </select>
                     </div>
                 </div>
                 <div class="columna" style="width: 33%; text-align: center; font-size: large;">
                     <div id="multi-search">
-                        <select id="comboSalas" class="cmbColumn" name="comboSalas">
-                            <option value="" disabled selected hidden>Sala</option>
+                        <select id="comboSalas" class="cmbColumn" name="comboSalas" onchange="actualizarListado()">
+                            <option value="" disabled selected hidden>Filtrar por Sala</option>
+                            <option value="">Todas las Salas</option>
                         </select>
                     </div>
                 </div>
                 <div class="columna" style="width: 33%; text-align: center; font-size: large;"></div>
             </div>
         </section>
-
+        <!---->
         <section id="seccion-catalogo" class="mb-5">
             <h2 class="h4 mb-3 fw-bold">Espacios Disponibles</h2>
 
