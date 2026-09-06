@@ -47,7 +47,7 @@
             <section id="seccion-filtros" class="mb-4">
                 <h2 class="title">Selección de Sala</h2>
                 <div class="row" style="display: flex;">
-                    <div class="columna" style="width: 33%; text-align: center; font-size: large;">
+                    <div class="col-*" style="width: 33%; text-align: center; font-size: large;">
                         <div id="multi-search">
                             <select id="comboEdificios" class="cmbColumn" name="comboEdificios"
                                 onchange="actualizarListado()">
@@ -56,7 +56,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="columna" style="width: 33%; text-align: center; font-size: large;">
+                    <div class="col-*" style="width: 33%; text-align: center; font-size: large;">
                         <div id="multi-search">
                             <select id="comboSalas" class="cmbColumn" name="comboSalas" onchange="actualizarListado()">
                                 <option value="" disabled selected hidden>Filtrar por Sala</option>
@@ -64,7 +64,9 @@
                             </select>
                         </div>
                     </div>
-                    <div class="columna" style="width: 33%; text-align: center; font-size: large;"></div>
+                    <div class="col-*" style="width: 33%; text-align: center; font-size: large;">
+                    <input type="text" class="form-control" id="filtroTexto" placeholder="Busqueda" onchange="actualizarListado()">
+                </div>
                 </div>
             </section>
             <!---->
