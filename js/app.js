@@ -161,14 +161,15 @@ const Horarios = [
 
 var edificioSeleccionado = "";
 var salaSeleccionada = "";
-var fechaSeleccionada = "";
+var textoSeleccionado = "";
 
 const comboEdificios = document.getElementById("comboEdificios");
 const comboSalas = document.getElementById("comboSalas");
+const filtroTexto = document.getElementById("filtroTexto");
 
-function checkFecha(dato) {
-    if (fechaSeleccionada != "") {
-        return dato.fecha == fechaSeleccionada;
+function checkTexto(dato) {
+    if (textoSeleccionado != "") {
+        return dato.descripcion.toLowerCase().includes(textoSeleccionado.toLowerCase());
     }
     return true;
 }
@@ -188,13 +189,14 @@ function checkIdEdificio(dato) {
 }
 
 function filtrar(dato) {
-    return (checkFecha(dato) && checkIdEdificio(dato) && checkTipoSala(dato));
+    return (checkTexto(dato) && checkIdEdificio(dato) && checkTipoSala(dato));
 }
 
 
 function actualizarListado(){
     salaSeleccionada = comboSalas.value;
     edificioSeleccionado = comboEdificios.value;
+    textoSeleccionado = filtroTexto.value
 
     ListadoFiltrado = espacios.filter(filtrar);
 
