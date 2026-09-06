@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Tipos_Sala.forEach(sala => {
         const opcion = document.createElement("option");
         opcion.value = sala.tipo;
-        opcion.text = sala.tipo;
+        opcion.text = sala.tipo + ' - ' + sala.asientos;
         comboSalas.appendChild(opcion);
     });
 
