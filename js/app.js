@@ -241,3 +241,117 @@ document.getElementById("contenedor-tarjetas").addEventListener("click", (e) => 
         //conectar con la funcion de reservas//
     }
 });
+
+let misReservas = [];
+//guardar reservas 
+const formularioReserva = document.querySelector("#reg-modal form");
+
+if (formularioReserva) {
+    formularioReserva.addEventListener("submit", function(evento) {
+        evento.preventDefault(); 
+//verifica dato
+        if (!formularioReserva.checkValidity()) {
+            evento.stopPropagation();
+            formularioReserva.classList.add("was-validated");
+            return; 
+        }
+
+//guarda los datos de la reserva
+        const nuevaReserva = {
+            id: Date.now(), 
+            espacio: document.getElementById("salaSeleccionada").value,
+            nombre: document.getElementById("Nombre").value,
+            email: document.getElementById("modal-email").value,
+            fecha: document.getElementById("fechaReserva").value,
+            horario: document.getElementById("horaReserva").options[document.getElementById("horaReserva").selectedIndex].text
+        };
+
+        misReservas.push(nuevaReserva);
+
+        renderizarMisReservas();
+    //notificar
+        Swal.fire({
+            icon: 'success',
+            title: '¡Reserva creada con éxito!',
+            text: 'Puedes revisar los detalles en la pestaña Mis Reservas.',
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+        const modalElement = document.getElementById("reg-modal");
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+
+        formularioReserva.reset();
+    });
+}   
+//reservas echas mostrar
+function renderizarMisReservas() {
+    const tbody = document.getElementById("tabla-mis-reservas");
+
+    tbody.innerHTML = "";
+//en caso de no haber reservas
+    if (misReservas.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" class="text-center text-muted">No hay reservas registradas todavía.</td>
+            </tr>
+        `;
+        return;
+    }
+//muestra las reservas
+    misReservas.forEach((reserva) => {
+        tbody.innerHTML += `
+            <tr>
+                <td><strong>${reserva.espacio}</strong></td>
+                <td>${reserva.nombre}</td>
+                <td>${reserva.fecha}</td>
+                <td><span class="badge bg-primary">${reserva.horario}</span></td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="cancelarReserva(${reserva.id})">Cancelar</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+//pasar hora
+document.getElementById("contenedor-tarjetas").addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-reservar")) {
+        const espacioId = e.target.getAttribute("data-id");
+        const espacioSeleccionado = espacios.find(esp => esp.id == espacioId);
+
+        if (espacioSeleccionado) {
+            document.getElementById("salaSeleccionada").value = espacioSeleccionado.nombre;
+
+            const selectHorario = document.getElementById("horaReserva");
+            selectHorario.innerHTML = `<option value="" selected disabled>Seleccione un horario...</option>`;
+
+            const horariosDeEstaSala = Horarios.filter(h => h.salaId == espacioSeleccionado.id);
+
+            if (horariosDeEstaSala.length > 0) {
+
+                horariosDeEstaSala.forEach(item => {
+                    selectHorario.innerHTML += `<option value="${item.hora}">${item.hora}</option>`;
+                });
+            } else {
+                selectHorario.innerHTML += `<option value="" disabled>No hay horarios disponibles</option>`;
+            }
+        }
+    }
+});
+
+function cancelarReserva(idUnico) {
+
+    misReservas = misReservas.filter(res => res.id !== idUnico);
+
+    renderizarMisReservas();
+
+    Swal.fire({
+        icon: 'info',
+        title: 'Reserva cancelada',
+
+    });
+}
