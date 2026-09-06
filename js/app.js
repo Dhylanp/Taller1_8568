@@ -131,6 +131,13 @@ function renderizarCatalogo(listaEspacios) {
 
         contenedor.innerHTML += tarjetaHTML;
     });
+
+    const espaciosDisponibles = listaEspacios.filter(espacio => espacio.disponible === true);
+    const cantidadDisponibles = espaciosDisponibles.length;
+
+    const espacioD = document.getElementById("contador-disponibles");
+    espacioD.textContent = `Cantidad Disponible: ${cantidadDisponibles}`;
+
 }
 
 // Apartado de Filtros
@@ -229,18 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Fin Filtros
-
-document.getElementById("contenedor-tarjetas").addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-reservar")) {
-        const espacioId = e.target.getAttribute("data-id");
-        const espacioSeleccionado = espacios.find(esp => esp.id == espacioId);
-
-        console.log("Espacio seleccionado para reservar:", espacioSeleccionado);
-        const inputSala = document.getElementById("salaSeleccionada");
-        inputSala.value = espacioSeleccionado.nombre;
-        //conectar con la funcion de reservas//
-    }
-});
 
 let misReservas = [];
 //guardar reservas 
